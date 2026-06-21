@@ -34,5 +34,47 @@ if (botaoBusca && campoBusca) {
                 }
             }
         });
+const btnPublicar = document.getElementById('btn-publicar');
+const formPublicar = document.getElementById('form-publicar');
+const gradeItens = document.querySelector('.grade');
+
+if (btnPublicar && formPublicar && gradeItens) {
+    btnPublicar.addEventListener('click', function() {
+        const inputNomeItem = document.getElementById('cadastrar-item-nome');
+        const inputLocalItem = document.getElementById('cadastrar-item-local');
+        
+        const nomeItemText = inputNomeItem.value;
+        const localItemText = inputLocalItem.value;
+
+        if (nomeItemText === '') {
+            window.alert('Por favor, digite o nome do item que você encontrou!');
+            inputNomeItem.focus();
+            return;
+        }
+
+        let localFinalText = "";
+        if (localItemText !== "") {
+            localFinalText = localItemText;
+        } else {
+            localFinalText = "Local Geral";
+        }
+
+        const imagemPadrao = "https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cindra/imagens/sem.jpg.gif/image";
+        
+        const novoCardHtml = `
+            <div class="borda_item">
+                <img src="${imagemPadrao}" height="90">
+                <p class="nome_item">${nomeItemText}</p>
+                <p class="desc_item">${localFinalText}</p>
+                <p style="font-size:10px">${new Date().toLocaleDateString()}</p>
+            </div>
+        `;
+
+        gradeItens.insertAdjacentHTML('afterbegin', novoCardHtml);
+        formPublicar.reset();
+        
+        window.alert('Item publicado com sucesso na grade! Lembre-se que ele sumirá se a página for recarregada.');
+    });
+}
     });
 }
