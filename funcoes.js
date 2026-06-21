@@ -61,14 +61,12 @@ function publicarNovoItem() {
 
     const imagemPadrao = "https://cdn-icons-png.flaticon.com/512/5024/5024484.png";
     
-    const novoCardHtml = `
-        <div class="borda_item">
-            <img src="${imagemPadrao}" height="90">
-            <p class="nome_item">${nomeItemText}</p>
-            <p class="desc_item">${localFinalText}</p>
-            <p style="font-size:10px">${new Date().toLocaleDateString()}</p>
-        </div>
-    `;
+    const novoCardHtml = '<div class="borda_item">' +
+        '<img src="' + imagemPadrao + '" height="90">' +
+        '<p class="nome_item">' + nomeItemText + '</p>' +
+        '<p class="desc_item">' + localFinalText + '</p>' +
+        '<p style="font-size:10px">' + new Date().toLocaleDateString() + '</p>' +
+    '</div>';
 
     if (gradeItens) {
         gradeItens.insertAdjacentHTML('afterbegin', novoCardHtml);
