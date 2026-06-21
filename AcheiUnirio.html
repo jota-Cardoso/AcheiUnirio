@@ -92,24 +92,24 @@
 
 <div class="form_reporte">
   <h3 style="color:RoyalBlue">PUBLICAR ITEM ENCONTRADO</h3>
-  <form action="upload.php" method="post">
+  <form action="#" id="form-publicar">
     <div class="reporte-flex">
       
       <div class="reporte-col-esquerda">
         <p><strong>Categorias</strong></p>
-        <input type="radio" name="categoria" value = "eletronico" required> Eletrônicos<br>
-        <input type="radio" name="categoria" value = "roupas"> Roupas<br>
-        <input type="radio" name="categoria" value = "documentos"> Documentos<br>
-        <input type="radio" name="categoria" value = "estudo"> Estudo<br>
-        <input type="radio" name="categoria" value = "pessoal"> Pessoal<br>
+        <input type="radio" name="categoria" value="eletronico" required> Eletrônicos<br>
+        <input type="radio" name="categoria" value="roupas"> Roupas<br>
+        <input type="radio" name="categoria" value="documentos"> Documentos<br>
+        <input type="radio" name="categoria" value="estudo"> Estudo<br>
+        <input type="radio" name="categoria" value="pessoal"> Pessoal<br>
         
         <p><strong>Área Geral</strong></p>
-        <input type="radio" name="area" value = "ccet" required> CCET<br>
-        <input type="radio" name="area" value = "cch"> CCH<br>
-        <input type="radio" name="area" value = "ru"> RU<br>
-        <input type="radio" name="area" value = "calove"> Calove<br>
-        <input type="radio" name="area" value = "biblioteca"> Biblioteca<br>
-        <input type="radio" name="area" value = "murinho"> Murinho<br>
+        <input type="radio" name="area" value="ccet" required> CCET<br>
+        <input type="radio" name="area" value="cch"> CCH<br>
+        <input type="radio" name="area" value="ru"> RU<br>
+        <input type="radio" name="area" value="calove"> Calove<br>
+        <input type="radio" name="area" value="biblioteca"> Biblioteca<br>
+        <input type="radio" name="area" value="murinho"> Murinho<br>
         <input type="radio" name="area"> Outro: <input type="text" style="width: 80px">
       </div>
 
@@ -121,18 +121,18 @@
         <input type="text" name="curso" class="input-reporte" required><br><br>
         
         <label>O que você achou?</label><br>
-        <input type="text" name="item_nome" class="input-reporte" required><br><br>
+        <input type="text" id="cadastrar-item-nome" name="item_nome" class="input-reporte" required><br><br>
         
         <label>Local específico <span class="opcional">(Opcional)</span>:</label><br>
-        <input type="text" name="especificacao" placeholder="Ex: Sala 212" class="input-reporte"><br><br>
+        <input type="text" id="cadastrar-item-local" name="especificacao" placeholder="Ex: Sala 212" class="input-reporte"><br><br>
         
         <label>Data e Hora:</label><br>
-        <input type="datetime-local" name="data_hora" class = "btn-estilo" required><br><br>
+        <input type="datetime-local" name="data_hora" class="btn-estilo" required><br><br>
         
         <label>Foto:</label><br>
-        <input type="file" name="foto" required><br><br>
+        <input type="file" name="foto"><br><br>
         
-        <input type="submit" value="Publicar item" class="btn-estilo" style="padding: 12px 30px;">
+        <input type="button" id="btn-publicar" value="Publicar item" class="btn-estilo" style="padding: 12px 30px;">
       </div>
 
     </div>
