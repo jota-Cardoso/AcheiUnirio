@@ -1,3 +1,4 @@
+window.alert("O arquivo funcoes.js foi carregado com sucesso!");
 const formCadastro = document.getElementById('cadastrar');
 
 if (formCadastro) {
