@@ -13,3 +13,26 @@ if (formCadastro) {
         }
     });
 }
+const botaoBusca = document.getElementById('botao-busca');
+const campoBusca = document.getElementById('campo-busca');
+
+if (botaoBusca && campoBusca) {
+    botaoBusca.addEventListener('click', function() {
+        const termoPesquisa = campoBusca.value.toLowerCase();
+        const itens = document.querySelectorAll('.borda_item');
+
+        itens.forEach(function(item) {
+            const nomeItemElemento = item.querySelector('.nome_item');
+            
+            if (nomeItemElemento) {
+                const nomeItemTexto = nomeItemElemento.textContent.toLowerCase();
+                
+                if (nomeItemTexto.includes(termoPesquisa)) {
+                    item.style.display = 'block'; 
+                } else {
+                    item.style.display = 'none';  
+                }
+            }
+        });
+    });
+}
