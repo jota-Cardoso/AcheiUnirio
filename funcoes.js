@@ -1,4 +1,4 @@
-window.alert("O arquivo funcoes.js foi carregado com sucesso!");
+
 const formCadastro = document.getElementById('cadastrar');
 
 if (formCadastro) {
@@ -35,48 +35,47 @@ if (botaoBusca && campoBusca) {
                 }
             }
         });
-const btnPublicar = document.getElementById('btn-publicar');
-const formPublicar = document.getElementById('form-publicar');
-const gradeItens = document.getElementById('grade-produtos');
+function publicarNovoItem() {
+    const inputNomeItem = document.getElementById('cadastrar-item-nome');
+    const inputLocalItem = document.getElementById('cadastrar-item-local');
+    const gradeItens = document.getElementById('grade-produtos');
+    const formPublicar = document.getElementById('form-publicar');
 
-if (btnPublicar && formPublicar && gradeItens) {
-    btnPublicar.addEventListener('click', function(event) {
-        event.preventDefault();
+    if (!inputNomeItem) return;
 
-        const inputNomeItem = document.getElementById('cadastrar-item-nome');
-        const inputLocalItem = document.getElementById('cadastrar-item-local');
-        
-        if (!inputNomeItem) return;
+    const nomeItemText = inputNomeItem.value.trim();
+    const localItemText = inputLocalItem ? inputLocalItem.value.trim() : "";
 
-        const nomeItemText = inputNomeItem.value.trim();
-        const localItemText = inputLocalItem ? inputLocalItem.value.trim() : "";
+    if (nomeItemText === '') {
+        window.alert('Por favor, digite o nome do item que você encontrou!');
+        inputNomeItem.focus();
+        return;
+    }
 
-        if (nomeItemText === '') {
-            window.alert('Por favor, digite o nome do item que você encontrou!');
-            inputNomeItem.focus();
-            return;
-        }
+    let localFinalText = "Local Geral";
+    if (localItemText !== "") {
+        localFinalText = localItemText;
+    }
 
-        let localFinalText = "Local Geral";
-        if (localItemText !== "") {
-            localFinalText = localItemText;
-        }
+    const imagemPadrao = "https://cdn-icons-png.flaticon.com/512/5024/5024484.png";
+    
+    const novoCardHtml = `
+        <div class="borda_item">
+            <img src="${imagemPadrao}" height="90">
+            <p class="nome_item">${nomeItemText}</p>
+            <p class="desc_item">${localFinalText}</p>
+            <p style="font-size:10px">${new Date().toLocaleDateString()}</p>
+        </div>
+    `;
 
-        const imagemPadrao = "https://cdn-icons-png.flaticon.com/512/5024/5024484.png";
-        
-        const novoCardHtml = `
-            <div class="borda_item">
-                <img src="${imagemPadrao}" height="90">
-                <p class="nome_item">${nomeItemText}</p>
-                <p class="desc_item">${localFinalText}</p>
-                <p style="font-size:10px">${new Date().toLocaleDateString()}</p>
-            </div>
-        `;
-
+    if (gradeItens) {
         gradeItens.insertAdjacentHTML('afterbegin', novoCardHtml);
-        formPublicar.reset();
-        
         window.alert('Item publicado com sucesso na grade!');
-    });
-}
+        
+        if (formPublicar) {
+            formPublicar.reset();
+        }
+    } else {
+        window.alert('Erro: Não foi possível encontrar a grade de produtos na tela.');
+    }
 }
