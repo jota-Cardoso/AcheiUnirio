@@ -35,6 +35,8 @@ if (botaoBusca && campoBusca) {
                 }
             }
         });
+    });
+}
 function publicarNovoItem() {
     const inputNomeItem = document.getElementById('cadastrar-item-nome');
     const inputLocalItem = document.getElementById('cadastrar-item-local');
