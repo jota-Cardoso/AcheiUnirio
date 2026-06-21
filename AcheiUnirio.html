@@ -8,10 +8,10 @@
 <body>
 <div class="borda_baixo">
   <h3 class="logo">Achei<span>.UNIRIO</span></h3>
-  <form action="pesquisar.php" method="get" class="search-container">
-    <input type="text" name="q" placeholder="Buscar item..." class="input-busca">
-    <input type="submit" value="Ir" class="btn-busca">
-  </form>
+  <div class="search-container">
+  <input type="text" id="campo-busca" placeholder="Buscar item..." class="input-busca">
+  <input type="button" id="botao-busca" value="Ir" class="btn-busca">
+</div>
 </div>
 
 <div class="container">
@@ -139,5 +139,7 @@
   </form>
 </div>
 
+<script src="funcoes.js"></script> 
 </body>
+
 </html>
