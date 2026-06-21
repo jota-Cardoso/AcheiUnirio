@@ -36,15 +36,19 @@ if (botaoBusca && campoBusca) {
         });
 const btnPublicar = document.getElementById('btn-publicar');
 const formPublicar = document.getElementById('form-publicar');
-const gradeItens = document.querySelector('.grade');
+const gradeItens = document.getElementById('grade-produtos');
 
 if (btnPublicar && formPublicar && gradeItens) {
-    btnPublicar.addEventListener('click', function() {
+    btnPublicar.addEventListener('click', function(event) {
+        event.preventDefault();
+
         const inputNomeItem = document.getElementById('cadastrar-item-nome');
         const inputLocalItem = document.getElementById('cadastrar-item-local');
         
-        const nomeItemText = inputNomeItem.value;
-        const localItemText = inputLocalItem.value;
+        if (!inputNomeItem) return;
+
+        const nomeItemText = inputNomeItem.value.trim();
+        const localItemText = inputLocalItem ? inputLocalItem.value.trim() : "";
 
         if (nomeItemText === '') {
             window.alert('Por favor, digite o nome do item que você encontrou!');
@@ -52,14 +56,12 @@ if (btnPublicar && formPublicar && gradeItens) {
             return;
         }
 
-        let localFinalText = "";
+        let localFinalText = "Local Geral";
         if (localItemText !== "") {
             localFinalText = localItemText;
-        } else {
-            localFinalText = "Local Geral";
         }
 
-        const imagemPadrao = "https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cindra/imagens/sem.jpg.gif/image";
+        const imagemPadrao = "https://cdn-icons-png.flaticon.com/512/5024/5024484.png";
         
         const novoCardHtml = `
             <div class="borda_item">
@@ -73,8 +75,7 @@ if (btnPublicar && formPublicar && gradeItens) {
         gradeItens.insertAdjacentHTML('afterbegin', novoCardHtml);
         formPublicar.reset();
         
-        window.alert('Item publicado com sucesso na grade! Lembre-se que ele sumirá se a página for recarregada.');
+        window.alert('Item publicado com sucesso na grade!');
     });
 }
-    });
 }
