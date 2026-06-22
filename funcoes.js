@@ -93,3 +93,31 @@ function filtrarCategoria(categoriaSelecionada) {
         }
     });
 }
+const formPesquisa = document.forms['Pesquisa'];
+
+if (formPesquisa) {
+    formPesquisa.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const caixasMarcadas = document.querySelectorAll('input[name="area_filtro"]:checked');
+        const locaisSelecionados = [];
+        
+        caixasMarcadas.forEach(function(caixa) {
+            locaisSelecionados.push(caixa.value);
+        });
+
+        const itens = document.querySelectorAll('.borda_item');
+
+        itens.forEach(function(item) {
+            const localDoItem = item.getAttribute('data-local');
+
+            if (locaisSelecionados.length === 0) {
+                item.style.display = 'block';
+            } else if (locaisSelecionados.includes(localDoItem)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+}
