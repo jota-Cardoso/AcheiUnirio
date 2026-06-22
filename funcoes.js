@@ -87,28 +87,20 @@ function publicarNovoItem() {
         window.alert('Erro: Não foi possível encontrar a grade de produtos na tela.');
     }
 }
-
-let radioAnterior = null;
-
-function gerenciarRadio(elemento) {
-    if (radioAnterior === elemento) {
-        elemento.checked = false;
-        radioAnterior = null;
-    } else {
-        radioAnterior = elemento;
-    }
-}
-
 function executarFiltroLocal() {
-    const categoriaSelecionada = document.querySelector('input[name="categoria"]:checked');
-    const caixasMarcadas = document.querySelectorAll('input[name="area_filtro"]:checked');
-    
+    const caixasCategorias = document.querySelectorAll('input[name="categoria_filtro"]:checked');
+    const categoriasSelecionadas = [];
+    caixasCategorias.forEach(function(caixa) {
+        categoriasSelecionadas.push(caixa.value);
+    });
+
+    const caixasLocais = document.querySelectorAll('input[name="area_filtro"]:checked');
     const locaisSelecionados = [];
-    caixasMarcadas.forEach(function(caixa) {
+    caixasLocais.forEach(function(caixa) {
         locaisSelecionados.push(caixa.value);
     });
 
-    const filtroCategoriaAtivo = (categoriaSelecionada !== null);
+    const filtroCategoriaAtivo = (categoriasSelecionadas.length > 0);
     const filtroLocalAtivo = (locaisSelecionados.length > 0);
 
     const itens = document.querySelectorAll('.borda_item');
@@ -129,7 +121,7 @@ function executarFiltroLocal() {
 
         let bateuCategoria = true;
         if (filtroCategoriaAtivo) {
-            bateuCategoria = (categoriaDoItem === categoriaSelecionada.value);
+            bateuCategoria = categoriasSelecionadas.includes(categoriaDoItem);
         }
 
         let bateuLocal = true;
@@ -141,6 +133,9 @@ function executarFiltroLocal() {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
+        }
+    });
+}
         }
     });
 }
