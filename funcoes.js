@@ -80,44 +80,35 @@ function publicarNovoItem() {
     }
 }
 
-function filtrarCategoria(categoriaSelecionada) {
+function ejecutarFiltroLocal() {
+    const categoriaSelecionada = document.querySelector('input[name="categoria"]:checked');
+    const caixasMarcadas = document.querySelectorAll('input[name="area_filtro"]:checked');
+    
+    const locaisSelecionados = [];
+    caixasMarcadas.forEach(function(caixa) {
+        locaisSelecionados.push(caixa.value);
+    });
+
     const itens = document.querySelectorAll('.borda_item');
 
     itens.forEach(function(item) {
         const categoriaDoItem = item.getAttribute('data-categoria');
+        const localDoItem = item.getAttribute('data-local');
 
-        if (categoriaDoItem === categoriaSelecionada) {
+        let bateuCategoria = true;
+        if (categoriaSelecionada) {
+            bateuCategoria = (categoriaDoItem === categoriaSelecionada.value);
+        }
+
+        let bateuLocal = true;
+        if (locaisSelecionados.length > 0) {
+            bateuLocal = locaisSelecionados.includes(localDoItem);
+        }
+
+        if (bateuCategoria && bateuLocal) {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
         }
-    });
-}
-const formPesquisa = document.forms['Pesquisa'];
-
-if (formPesquisa) {
-    formPesquisa.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const caixasMarcadas = document.querySelectorAll('input[name="area_filtro"]:checked');
-        const locaisSelecionados = [];
-        
-        caixasMarcadas.forEach(function(caixa) {
-            locaisSelecionados.push(caixa.value);
-        });
-
-        const itens = document.querySelectorAll('.borda_item');
-
-        itens.forEach(function(item) {
-            const localDoItem = item.getAttribute('data-local');
-
-            if (locaisSelecionados.length === 0) {
-                item.style.display = 'block';
-            } else if (locaisSelecionados.includes(localDoItem)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
     });
 }
