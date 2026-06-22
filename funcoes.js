@@ -54,14 +54,22 @@ function publicarNovoItem() {
         return;
     }
 
+    const categoriaMarcada = document.querySelector('input[name="categoria"]:checked');
+    const areaMarcada = document.querySelector('input[name="area"]:checked');
+
+    const valorCategoria = categoriaMarcada ? categoriaMarcada.value : "pessoal";
+    const valorArea = areaMarcada ? areaMarcada.value : "outro";
+
     let localFinalText = "Local Geral";
     if (localItemText !== "") {
         localFinalText = localItemText;
+    } else if (areaMarcada) {
+        localFinalText = areaMarcada.value.toUpperCase();
     }
 
     const imagemPadrao = "https://cdn-icons-png.flaticon.com/512/5024/5024484.png";
     
-    const novoCardHtml = '<div class="borda_item">' +
+    const novoCardHtml = '<div class="borda_item" data-categoria="' + valorCategoria + '" data-local="' + valorArea + '">' +
         '<img src="' + imagemPadrao + '" height="90">' +
         '<p class="nome_item">' + nomeItemText + '</p>' +
         '<p class="desc_item">' + localFinalText + '</p>' +
@@ -80,7 +88,7 @@ function publicarNovoItem() {
     }
 }
 
-function ejecutarFiltroLocal() {
+function executarFiltroLocal() {
     const categoriaSelecionada = document.querySelector('input[name="categoria"]:checked');
     const caixasMarcadas = document.querySelectorAll('input[name="area_filtro"]:checked');
     
