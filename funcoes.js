@@ -40,6 +40,7 @@ if (botaoBusca && campoBusca) {
 function publicarNovoItem() {
     const inputNomeItem = document.getElementById('cadastrar-item-nome');
     const inputLocalItem = document.getElementById('cadastrar-item-local');
+    const selectCategoria = document.getElementById('cadastrar-item-categoria');
     const gradeItens = document.getElementById('grade-produtos');
     const formPublicar = document.getElementById('form-publicar');
 
@@ -54,10 +55,9 @@ function publicarNovoItem() {
         return;
     }
 
-    const categoriaMarcada = document.querySelector('input[name="categoria"]:checked');
     const areaMarcada = document.querySelector('input[name="area"]:checked');
 
-    const valorCategoria = categoriaMarcada ? categoriaMarcada.value : "pessoal";
+    const valorCategoria = selectCategoria ? selectCategoria.value : "pessoal";
     const valorArea = areaMarcada ? areaMarcada.value : "outro";
 
     let localFinalText = "Local Geral";
