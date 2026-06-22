@@ -79,3 +79,17 @@ function publicarNovoItem() {
         window.alert('Erro: Não foi possível encontrar a grade de produtos na tela.');
     }
 }
+
+function filtrarCategoria(categoriaSelecionada) {
+    const itens = document.querySelectorAll('.borda_item');
+
+    itens.forEach(function(item) {
+        const categoriaDoItem = item.getAttribute('data-categoria');
+
+        if (categoriaDoItem === categoriaSelecionada) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
