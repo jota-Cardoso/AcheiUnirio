@@ -19,11 +19,11 @@
     <h4 style="margin-top:0">Filtros</h4>
     <form name="Pesquisa" action="pesquisar.php" method="get">
       <p><strong>Categorias</strong></p>
-      <input name="categoria_filtro" value = "eletronico" type="checkbox"> Eletrônicos<br>
-      <input name="categoria_filtro" value="roupas" type="checkbox"> Roupas<br>
-      <input name="categoria_filtro" value="documentos" type="checkbox"> Documentos<br>
-      <input name="categoria_filtro" value="estudo" type="checkbox"> Estudo<br>
-      <input name="categoria_filtro" value="pessoal" type="checkbox"> Pessoal<br>
+  <input type="radio" name="categoria" value="eletronico" onclick="filtrarCategoria('eletronico')"> Eletrônicos<br>
+  <input type="radio" name="categoria" value="roupas" onclick="filtrarCategoria('roupas')"> Roupas<br>
+  <input type="radio" name="categoria" value="documentos" onclick="filtrarCategoria('documentos')"> Documentos<br>
+  <input type="radio" name="categoria" value="estudo" onclick="filtrarCategoria('estudo')"> Estudo<br>
+  <input type="radio" name="categoria" value="pessoal" onclick="filtrarCategoria('pessoal')"> Pessoal<br>
       <br>
       <p><strong>Local</strong></p>
       <input name="area_filtro" value="ccet" type="checkbox"> CCET<br>
