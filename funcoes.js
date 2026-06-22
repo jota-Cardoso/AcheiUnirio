@@ -97,19 +97,32 @@ function executarFiltroLocal() {
         locaisSelecionados.push(caixa.value);
     });
 
+    const filtroCategoriaAtivo = (categoriaSelecionada && categoriaSelecionada.value !== "todas");
+    const filtroLocalAtivo = (locaisSelecionados.length > 0);
+
     const itens = document.querySelectorAll('.borda_item');
 
     itens.forEach(function(item) {
         const categoriaDoItem = item.getAttribute('data-categoria');
         const localDoItem = item.getAttribute('data-local');
 
+        if (!filtroCategoriaAtivo && !filtroLocalAtivo) {
+            item.style.display = 'block';
+            return;
+        }
+
+        if (!categoriaDoItem || !localDoItem) {
+            item.style.display = 'none';
+            return;
+        }
+
         let bateuCategoria = true;
-        if (categoriaSelecionada) {
+        if (filtroCategoriaAtivo) {
             bateuCategoria = (categoriaDoItem === categoriaSelecionada.value);
         }
 
         let bateuLocal = true;
-        if (locaisSelecionados.length > 0) {
+        if (filtroLocalAtivo) {
             bateuLocal = locaisSelecionados.includes(localDoItem);
         }
 
