@@ -136,6 +136,3 @@ function executarFiltroLocal() {
         }
     });
 }
-        }
-    });
-}
