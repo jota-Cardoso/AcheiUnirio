@@ -88,6 +88,17 @@ function publicarNovoItem() {
     }
 }
 
+let radioAnterior = null;
+
+function gerenciarRadio(elemento) {
+    if (radioAnterior === elemento) {
+        elemento.checked = false;
+        radioAnterior = null;
+    } else {
+        radioAnterior = elemento;
+    }
+}
+
 function executarFiltroLocal() {
     const categoriaSelecionada = document.querySelector('input[name="categoria"]:checked');
     const caixasMarcadas = document.querySelectorAll('input[name="area_filtro"]:checked');
@@ -97,7 +108,7 @@ function executarFiltroLocal() {
         locaisSelecionados.push(caixa.value);
     });
 
-    const filtroCategoriaAtivo = (categoriaSelecionada && categoriaSelecionada.value !== "todas");
+    const filtroCategoriaAtivo = (categoriaSelecionada !== null);
     const filtroLocalAtivo = (locaisSelecionados.length > 0);
 
     const itens = document.querySelectorAll('.borda_item');
